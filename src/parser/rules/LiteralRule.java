@@ -1,0 +1,15 @@
+package parser.rules;
+
+import parser.NodeType;
+import parser.nodes.NonTerminalNode;
+import parser.nodes.TreeNode;
+
+import java.util.ArrayList;
+import java.util.Stack;
+
+public class LiteralRule extends OneToOneRule {
+    @Override
+    public Stack<TreeNode> apply(Stack<TreeNode> stack) {
+        return oneToOneRule(stack, NodeType.LITERAL);
+    }
+}
