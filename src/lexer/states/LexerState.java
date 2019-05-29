@@ -1,7 +1,7 @@
-package Lexer.states;
+package lexer.states;
 
 
-import Lexer.LexerAutomaton;
+import lexer.LexerAutomaton;
 
 public interface LexerState {
     boolean isAccepting();

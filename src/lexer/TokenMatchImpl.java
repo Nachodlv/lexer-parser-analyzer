@@ -1,4 +1,4 @@
-package Lexer;
+package lexer;
 
 public class TokenMatchImpl implements TokenMatch {
     private int column;
@@ -6,7 +6,7 @@ public class TokenMatchImpl implements TokenMatch {
     private Token token;
     private String value;
 
-    public TokenMatchImpl(Token token, String value) {
+    TokenMatchImpl(Token token, String value) {
         this.token = token;
         this.value = value;
     }
@@ -39,5 +39,11 @@ public class TokenMatchImpl implements TokenMatch {
     @Override
     public void setRow(int row) {
         this.row = row;
+    }
+
+    @Override
+    public String toString() {
+//        return token.toString() + "(" + value + "), (" + row + ", " + column + ")";
+        return token == Token.NEW_LINE? token.toString() + "\n": token.toString();
     }
 }

@@ -1,6 +1,6 @@
-package Lexer;
+package lexer;
 
-import Lexer.states.LexerState;
+import lexer.states.LexerState;
 
 public class LexerAutomaton extends LexerHandler {
     private Token token;
@@ -24,7 +24,7 @@ public class LexerAutomaton extends LexerHandler {
 
             currentState.match(aChar, this);
             if(currentState.isAccepting())
-                return new TokenMatchImpl(token, getWord(chars, i - 1));
+                return new TokenMatchImpl(token, getWord(chars, i));
         }
         return super.handleString(text);
     }

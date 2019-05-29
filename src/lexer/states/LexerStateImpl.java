@@ -1,6 +1,6 @@
-package Lexer.states;
+package lexer.states;
 
-import Lexer.LexerAutomaton;
+import lexer.LexerAutomaton;
 
 import java.util.Map;
 
@@ -11,7 +11,7 @@ public abstract class LexerStateImpl implements LexerState {
         this.adjacentStates = adjacentStates;
     }
 
-    public LexerStateImpl() {
+    LexerStateImpl() {
     }
 
     @Override

@@ -1,4 +1,4 @@
-package Lexer;
+package lexer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class LexerImpl implements Lexer, TokenSupplier {
     }
 
     private List<TokenMatch> lex(String text, List<TokenMatch> tokens, int row, int column) {
-        if(text.length() == 0) return tokens;
+        if(text.length() == 1) return tokens;
 
         TokenMatch tokenMatch = handler.handleString(text);
         int length = tokenMatch.getValue().length();

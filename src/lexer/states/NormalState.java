@@ -1,4 +1,4 @@
-package Lexer.states;
+package lexer.states;
 
 
 public class NormalState extends LexerStateImpl {

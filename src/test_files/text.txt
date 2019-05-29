@@ -1,0 +1,15 @@
+let a = 12;
+let b = 12.123
+"Hola"
+let a: number = "Hola";
+print(a)
+print("hola")
+"ho'ka'"
+'ho"ka"'
+string
+let a: string = "asd"
+
+a-123
+a*123
+12++12
+a/12

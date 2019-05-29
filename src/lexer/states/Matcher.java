@@ -1,6 +1,4 @@
-package Lexer.states;
-
-import Lexer.Lexer;
+package lexer.states;
 
 public interface Matcher {
     boolean match(char character);

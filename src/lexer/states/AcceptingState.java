@@ -1,6 +1,4 @@
-package Lexer.states;
-
-import java.util.Map;
+package lexer.states;
 
 public class AcceptingState extends LexerStateImpl {
 

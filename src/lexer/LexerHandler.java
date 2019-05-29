@@ -1,4 +1,4 @@
-package Lexer;
+package lexer;
 
 public abstract class LexerHandler {
     private LexerHandler handler;
@@ -7,7 +7,7 @@ public abstract class LexerHandler {
         return handler.handleString(text);
     }
 
-    public void setHandler(LexerHandler handler) {
+    void setHandler(LexerHandler handler) {
         this.handler = handler;
     }
 }

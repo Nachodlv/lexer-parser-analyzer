@@ -1,4 +1,4 @@
-package Lexer.states;
+package lexer.states;
 
 public class MatcherImpl implements Matcher {
 
