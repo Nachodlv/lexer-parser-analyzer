@@ -16,5 +16,7 @@ public enum Token {
     MULTIPLY,
     DIVIDE,
     EQUALS,
-    IDENTIFIER
+    IDENTIFIER,
+    NEW_LINE,
+    WHITESPACE
 }

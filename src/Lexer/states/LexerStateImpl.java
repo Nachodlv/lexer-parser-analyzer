@@ -11,6 +11,9 @@ public abstract class LexerStateImpl implements LexerState {
         this.adjacentStates = adjacentStates;
     }
 
+    public LexerStateImpl() {
+    }
+
     @Override
     public void match(char character, LexerAutomaton automaton) {
         adjacentStates.forEach((key, value) -> {
@@ -30,5 +33,9 @@ public abstract class LexerStateImpl implements LexerState {
             }
         }
         return found;
+    }
+
+    public void setAdjacentStates(Map<Matcher, LexerState> adjacentStates) {
+        this.adjacentStates = adjacentStates;
     }
 }

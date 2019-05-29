@@ -6,9 +6,7 @@ public class TokenMatchImpl implements TokenMatch {
     private Token token;
     private String value;
 
-    public TokenMatchImpl(int column, int row, Token token, String value) {
-        this.column = column;
-        this.row = row;
+    public TokenMatchImpl(Token token, String value) {
         this.token = token;
         this.value = value;
     }
@@ -31,5 +29,15 @@ public class TokenMatchImpl implements TokenMatch {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    @Override
+    public void setRow(int row) {
+        this.row = row;
     }
 }

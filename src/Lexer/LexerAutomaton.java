@@ -7,14 +7,15 @@ public class LexerAutomaton extends LexerHandler {
     private LexerState initialState;
     private LexerState currentState;
 
-    public LexerAutomaton(Token token, LexerState initialState) {
+    public LexerAutomaton(LexerHandler lexerHandler, Token token, LexerState initialState) {
+        setHandler(lexerHandler);
         this.token = token;
         this.initialState = initialState;
         this.currentState = initialState;
     }
 
     @Override
-    TokenMatch handleString(String text, int column, int row) {
+    TokenMatch handleString(String text) {
         char[] chars = text.toCharArray();
         currentState = initialState;
         for (int i = 0; i < chars.length; i++) {
@@ -23,9 +24,9 @@ public class LexerAutomaton extends LexerHandler {
 
             currentState.match(aChar, this);
             if(currentState.isAccepting())
-                return new TokenMatchImpl(column, row + i, token, getWord(chars, i - 1));
+                return new TokenMatchImpl(token, getWord(chars, i - 1));
         }
-        return super.handleString(text, column, row);
+        return super.handleString(text);
     }
 
     public void setState(LexerState newState) {
