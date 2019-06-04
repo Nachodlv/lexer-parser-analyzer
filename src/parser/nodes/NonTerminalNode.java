@@ -51,4 +51,10 @@ public class NonTerminalNode implements TreeNode {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return "(" + nodeType.toString() + ", " + value +
+                child.stream().map(treeNode -> ", " + treeNode.toString()) + ")";
+    }
 }

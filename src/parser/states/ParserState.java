@@ -7,5 +7,5 @@ import java.util.Stack;
 
 public interface ParserState {
     boolean isAccepting();
-    Stack<TreeNode> match(Stack<TreeNode> treeNodes, ParseAutomaton automaton);
+    Stack<TreeNode> match(Stack<TreeNode> treeNodes, TreeNode lookAhead, ParseAutomaton automaton);
 }

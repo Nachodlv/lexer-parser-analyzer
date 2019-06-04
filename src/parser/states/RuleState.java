@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Stack;
 
 public class RuleState extends ParserStateImpl {
-    private Map<TreeNode, Rule> rules;
+    private Map<TreeNodeMatcher, Rule> rules;
 
-    public RuleState(Map<TreeNode, Rule> rules) {
+    public RuleState(Map<TreeNodeMatcher, Rule> rules) {
         this.rules = rules;
     }
 
@@ -20,14 +20,14 @@ public class RuleState extends ParserStateImpl {
     }
 
     @Override
-    public Stack<TreeNode> match(Stack<TreeNode> treeNodes, ParseAutomaton automaton) {
-        TreeNode node = treeNodes.peek();
-        for (Map.Entry<TreeNode, Rule> entry : rules.entrySet()) {
-            if(entry.getKey().getNodeType() == node.getNodeType()) {
+    public Stack<TreeNode> match(Stack<TreeNode> treeNodes, TreeNode lookAhead, ParseAutomaton automaton) {
+        TreeNode lastNode = treeNodes.peek();
+        for (Map.Entry<TreeNodeMatcher, Rule> entry : rules.entrySet()) {
+            if(entry.getKey().match(lastNode, lookAhead)) {
                 treeNodes = entry.getValue().apply(treeNodes);
-                match(treeNodes, automaton);
+                match(treeNodes, lookAhead, automaton);
             }
         }
-        return super.match(treeNodes, automaton);
+        return super.match(treeNodes, lookAhead, automaton);
     }
 }

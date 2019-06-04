@@ -11,17 +11,16 @@ public abstract class ParserStateImpl implements ParserState {
     private Map<TreeNode, ParserState> adjacentNodes;
 
     @Override
-    public Stack<TreeNode> match(Stack<TreeNode> treeNodes, ParseAutomaton automaton) {
-        TreeNode treeNode = treeNodes.peek();
+    public Stack<TreeNode> match(Stack<TreeNode> treeNodes, TreeNode lookAhead, ParseAutomaton automaton) {
         for (Map.Entry<TreeNode, ParserState> entry : adjacentNodes.entrySet()) {
-            if (treeNode.getNodeType() == entry.getKey().getNodeType()) {
+            if (lookAhead.getNodeType() == entry.getKey().getNodeType()) {
                 automaton.setCurrentState(entry.getValue());
                 return treeNodes;
             }
         }
         throw new ParserException(
-                "Invalid value: " + treeNode.getValue() +
-                        "at (" + treeNode.getRow() + ", " + treeNode.getColumn() + ")");
+                "Invalid value: " + lookAhead.getValue() +
+                        "at (" + lookAhead.getRow() + ", " + lookAhead.getColumn() + ")");
     }
 
     public void setAdjacentNodes(Map<TreeNode, ParserState> adjacentNodes) {

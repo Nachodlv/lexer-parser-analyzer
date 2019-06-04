@@ -24,8 +24,9 @@ public class ParseAutomaton {
         List<TreeNode> treeNodes = tokens.stream().map(token -> tokenManager.getTreeNode(token)).collect(Collectors.toList());
         int index = 0;
         while (!currentState.isAccepting()) {
-            tokenStack.push(treeNodes.get(index));
-            currentState.match(tokenStack, this);
+            TreeNode treeNode = treeNodes.get(index);
+            currentState.match(tokenStack, treeNode, this);
+            tokenStack.push(treeNode);
             index++;
         }
         return tokenStack.peek();
