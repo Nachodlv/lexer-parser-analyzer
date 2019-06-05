@@ -1,7 +1,9 @@
 package main;
 
 import lexer.Lexer;
+import lexer.LexerImpl;
 import lexer.TokenMatch;
+import parser.Parser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,7 +14,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Lexer lexer = LexerBuilder.buildAutomatons();
+        LexerImpl lexer = LexerBuilder.buildAutomatons();
+        Parser parser = ParserBuilder.buildParser(lexer);
         String text;
         try {
             text = readFile(args);
@@ -22,6 +25,7 @@ public class Main {
         }
 
         List<TokenMatch> lex = lexer.lex(text);
+        parser.parse();
         System.out.println(lex);
     }
 

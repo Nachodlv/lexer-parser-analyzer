@@ -27,5 +27,6 @@ public enum NodeType {
     ASSIGNATION,
     PRINT_DECLARATION,
     LINE,
+    SOURCE,
     $
 }

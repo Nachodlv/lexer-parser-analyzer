@@ -13,7 +13,7 @@ abstract class OneToOneRule implements Rule{
         TreeNode node = stack.pop();
         ArrayList<TreeNode> child = new ArrayList<>();
         child.add(node);
-        NonTerminalNode newNode = new NonTerminalNode(child, nodeType, node.getRow(), node.getColumn());
+        NonTerminalNode newNode = new NonTerminalNode(child, nodeType, node.getRow(), node.getColumn(), node.getValue());
         stack.push(newNode);
         return stack;
     }

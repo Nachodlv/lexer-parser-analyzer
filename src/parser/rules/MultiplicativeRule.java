@@ -16,10 +16,12 @@ public class MultiplicativeRule implements Rule {
         TreeNode operand = stack.peek();
         if (operand.getNodeType() == NodeType.MULTIPLY || operand.getNodeType() == NodeType.DIVIDE) {
             stack.pop();
-            child.add(operand);
             child.add(stack.pop());
+            child.add(operand);
+            child.add(literal);
             pushToStack(stack, operand, child);
         } else {
+            child.add(literal);
             pushToStack(stack, literal, child);
         }
         return stack;

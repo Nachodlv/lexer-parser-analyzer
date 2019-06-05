@@ -22,7 +22,7 @@ public class ParserImpl implements Parser, TreeNodeSupplier {
                 tokenSupplier
                         .getTokens()
                         .stream()
-                        .filter(token -> token.getToken() == Token.NEW_LINE || token.getToken() == Token.WHITESPACE)
+                        .filter(token -> token.getToken() != Token.NEW_LINE && token.getToken() != Token.WHITESPACE)
                         .collect(Collectors.toList()));
         return treeNode;
     }

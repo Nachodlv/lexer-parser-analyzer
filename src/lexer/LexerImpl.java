@@ -15,7 +15,7 @@ public class LexerImpl implements Lexer, TokenSupplier {
 
     @Override
     public List<TokenMatch> lex(String text) {
-        tokens = lex(text, new ArrayList<>(), 0, 0);
+        tokens = lex(text, new ArrayList<>(), 1, 1);
         return tokens;
     }
 

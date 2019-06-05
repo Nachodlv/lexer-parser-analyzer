@@ -15,7 +15,7 @@ class LexerBuilder {
     private LexerBuilder() {
     }
 
-    static Lexer buildAutomatons() {
+    static LexerImpl buildAutomatons() {
         InvalidAutomaton invalidAutomaton = new InvalidAutomaton();
 
         //IDENTIFIER

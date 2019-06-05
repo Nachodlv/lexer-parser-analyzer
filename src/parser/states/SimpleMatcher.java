@@ -1,18 +1,16 @@
 package parser.states;
 
-import parser.nodes.TreeNode;
-
-import java.util.Stack;
+import parser.NodeType;
 
 public class SimpleMatcher implements TreeNodeMatcher {
-    private TreeNode treeNode;
+    private NodeType treeNode;
 
-    public SimpleMatcher(TreeNode treeNode) {
+    public SimpleMatcher(NodeType treeNode) {
         this.treeNode = treeNode;
     }
 
     @Override
-    public boolean match(TreeNode lastNode, TreeNode lookAhead) {
-        return lookAhead.getNodeType() == this.treeNode.getNodeType();
+    public boolean match(NodeType lastNode, NodeType lookAhead) {
+        return lastNode == this.treeNode;
     }
 }
