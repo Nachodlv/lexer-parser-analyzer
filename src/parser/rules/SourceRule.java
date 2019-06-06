@@ -12,7 +12,7 @@ public class SourceRule implements Rule {
     public Stack<TreeNode> apply(Stack<TreeNode> stack) {
         ArrayList<TreeNode> child = new ArrayList<>();
         while (!stack.empty()) {
-            child.add(stack.pop());
+            child.add(0, stack.pop());
         }
         stack.push(new NonTerminalNode(child, NodeType.SOURCE, 0, 0));
         return stack;

@@ -1,4 +1,6 @@
-a= 2 + 3 * 4;
-a = 12 + 2;
-let c = 12;
-print(a);
+print(a + 3);
+let a :number = "a" + a;
+let a:number;
+let b:string;
+let asd: string =   "'1233'" + '1123123"12"';
+a = 3;
