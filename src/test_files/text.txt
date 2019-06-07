@@ -1,5 +1,4 @@
-print("El resultado final es: " + 3);
-print(4/2);
-print(4-2);
-print("a" + 3);
-print("hola" + "chau");
+let a:number = 3;
+a = 4;
+print(a);
+a = "a";

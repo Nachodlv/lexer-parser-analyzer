@@ -14,14 +14,14 @@ public class AssignationInterpreter implements StatementInterpreter {
 
     @Override
     public void interpret(Context context, TreeNode treeNode) {
-        TreeNode id = treeNode.getChild().get(0);
-        TreeNode initializer = treeNode.getChild().get(1);
+        TreeNode initializer = treeNode.getChild().get(0);
+        String id = treeNode.getValue();
         TreeNode equal = initializer.getChild().get(0);
         TreeNode additive = initializer.getChild().get(1);
 
         Variable variable = supplier.getExpressionInterpreter(additive.getNodeType()).calculate(context, additive);
-        Variable result = context.getVariable(id.getValue()).calculateWith(variable, equal);
-        context.reAssignVariable(id.getValue(), result);
+        Variable result = context.getVariable(id).calculateWith(variable, equal);
+        context.reAssignVariable(id, result);
     }
 
     @Override
