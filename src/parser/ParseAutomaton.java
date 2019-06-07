@@ -21,7 +21,8 @@ public class ParseAutomaton {
     TreeNode handleTokens(List<TokenMatch> tokens) {
         Stack<TreeNode> tokenStack = new Stack<>();
         List<TreeNode> treeNodes = tokens.stream().map(token -> tokenManager.getTreeNode(token)).collect(Collectors.toList());
-        treeNodes.add(new TerminalNode(NodeType.$));
+        TokenMatch tokenMatch = tokens.get(tokens.size() - 1);
+        treeNodes.add(new TerminalNode(NodeType.$, tokenMatch.getColumn(), tokenMatch.getRow(), "at end of file"));
         int index = 0;
         while (!currentState.isAccepting()) {
             TreeNode treeNode = treeNodes.get(index);

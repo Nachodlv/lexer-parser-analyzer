@@ -1,6 +1,5 @@
-print(a + 3);
-let a :number = "a" + a;
-let a:number;
-let b:string;
-let asd: string =   "'1233'" + '1123123"12"';
-a = 3;
+print("El resultado final es: " + 3);
+print(4/2);
+print(4-2);
+print("a" + 3);
+print("hola" + "chau");

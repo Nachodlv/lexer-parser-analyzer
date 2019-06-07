@@ -1,12 +1,11 @@
 package main;
 
-import lexer.Lexer;
+import interpreter.ContextListener;
+import interpreter.Interpreter;
 import lexer.LexerImpl;
 import lexer.TokenMatch;
-import parser.Parser;
+import parser.ParserImpl;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,7 +14,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         LexerImpl lexer = LexerBuilder.buildAutomatons();
-        Parser parser = ParserBuilder.buildParser(lexer);
+        ParserImpl parser = ParserBuilder.buildParser(lexer);
+        Interpreter interpreter = InterpreterBuilder.buildInterpreter(parser, new Printer());
         String text;
         try {
             text = readFile(args);
@@ -24,14 +24,14 @@ public class Main {
             return;
         }
 
-        List<TokenMatch> lex = lexer.lex(text);
+        lexer.lex(text);
         parser.parse();
-        System.out.println(lex);
+        interpreter.interpret();
     }
 
     private static String readFile(String[] args) throws IOException {
         String filePath = "./src/test_files/text.txt";
-        if(args.length > 0) filePath = args[0];
+        if (args.length > 0) filePath = args[0];
         return new String(Files.readAllBytes(Paths.get(filePath)));
 
     }

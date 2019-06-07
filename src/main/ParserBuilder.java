@@ -13,7 +13,7 @@ class ParserBuilder {
     private ParserBuilder() {
     }
 
-    static Parser buildParser(TokenSupplier tokenSupplier) {
+    static ParserImpl buildParser(TokenSupplier tokenSupplier) {
 
         FinalState finalState = new FinalState();
 

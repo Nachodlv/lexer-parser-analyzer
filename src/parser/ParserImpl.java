@@ -29,6 +29,6 @@ public class ParserImpl implements Parser, TreeNodeSupplier {
 
     @Override
     public TreeNode getTree() {
-        return null;
+        return treeNode;
     }
 }

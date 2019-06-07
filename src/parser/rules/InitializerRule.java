@@ -11,8 +11,9 @@ public class InitializerRule implements Rule {
     @Override
     public Stack<TreeNode> apply(Stack<TreeNode> stack) {
         TreeNode additive = stack.pop();
-        stack.pop();
+        TreeNode equals = stack.pop();
         ArrayList<TreeNode> child = new ArrayList<>();
+        child.add(equals);
         child.add(additive);
         NonTerminalNode node = new NonTerminalNode(
                 child,
