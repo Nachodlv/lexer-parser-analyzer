@@ -2,9 +2,13 @@ package lexer.exceptions;
 
 public class InvalidTokenException extends RuntimeException {
 
-    public InvalidTokenException(String message) {
-        super(message);
+    private String invalidToken;
+
+    public InvalidTokenException(String invalidToken) {
+        this.invalidToken = invalidToken;
     }
 
-
+    public String getInvalidToken() {
+        return invalidToken;
+    }
 }

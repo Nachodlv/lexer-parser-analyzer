@@ -13,11 +13,17 @@ import parser.TreeNodeSupplier;
 
 import java.util.HashMap;
 
-class InterpreterBuilder {
+public class InterpreterBuilder {
     private InterpreterBuilder() {
     }
 
     static Interpreter buildInterpreter(TreeNodeSupplier treeNodeSupplier, ContextListener listener) {
+        InterpreterImpl interpreter = buildInterpreter(treeNodeSupplier);
+        interpreter.getContext().addListener(listener);
+        return interpreter;
+    }
+
+    public static InterpreterImpl buildInterpreter(TreeNodeSupplier treeNodeSupplier) {
         HashMap<NodeType, ExpressionInterpreter> expressions = new HashMap<>();
         ExpressionInterpreterSupplierImpl expressionsSupplier = new ExpressionInterpreterSupplierImpl(expressions);
         AdditiveInterpreter additiveInterpreter = new AdditiveInterpreter(expressionsSupplier);
@@ -33,8 +39,6 @@ class InterpreterBuilder {
         interpreters.put(NodeType.PRINT_DECLARATION, new PrintInterpreter(expressionsSupplier));
         interpreters.put(NodeType.ASSIGNATION, new AssignationInterpreter(expressionsSupplier));
 
-        InterpreterImpl interpreter = new InterpreterImpl(treeNodeSupplier, statementInterpreterSupplier);
-        interpreter.getContext().addListener(listener);
-        return interpreter;
+        return new InterpreterImpl(treeNodeSupplier, statementInterpreterSupplier);
     }
 }

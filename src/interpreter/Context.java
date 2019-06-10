@@ -41,4 +41,7 @@ public class Context {
         listeners.forEach(contextListener -> contextListener.receiveNewOutput(newOutput));
     }
 
+    List<String> getOutput() {
+        return output;
+    }
 }

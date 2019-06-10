@@ -11,11 +11,11 @@ import lexer.LexerHandler;
 
 import java.util.HashMap;
 
-class LexerBuilder {
+public class LexerBuilder {
     private LexerBuilder() {
     }
 
-    static LexerImpl buildAutomatons() {
+    public static LexerImpl buildAutomatons() {
         InvalidAutomaton invalidAutomaton = new InvalidAutomaton();
 
         //IDENTIFIER
@@ -107,7 +107,7 @@ class LexerBuilder {
         LexerStateImpl intState = new NormalState();
         NormalState firstState = new NormalState();
         MatcherImpl numberMatcher = new MatcherImpl("[0-9]");
-        MatcherImpl notNumberMatcher = new MatcherImpl("[^0-9]");
+        MatcherImpl notNumberMatcher = new MatcherImpl("[^0-9a-zA-Z]");
 
         HashMap<Matcher, LexerState> intTransitions = new HashMap<>();
         intTransitions.put(new MatcherImpl("\\."), doubleState);

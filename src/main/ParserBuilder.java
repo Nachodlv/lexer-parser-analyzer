@@ -1,19 +1,17 @@
 package main;
 
-import lexer.Token;
 import lexer.TokenSupplier;
 import parser.*;
 import parser.rules.*;
 import parser.states.*;
 
-import javax.xml.soap.Node;
 import java.util.HashMap;
 
-class ParserBuilder {
+public class ParserBuilder {
     private ParserBuilder() {
     }
 
-    static ParserImpl buildParser(TokenSupplier tokenSupplier) {
+    public static ParserImpl buildParser(TokenSupplier tokenSupplier) {
 
         FinalState finalState = new FinalState();
 

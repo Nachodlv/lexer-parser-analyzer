@@ -1,5 +1,7 @@
 package lexer;
 
+import lexer.exceptions.InvalidTokenException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +17,18 @@ public class LexerImpl implements Lexer, TokenSupplier {
 
     @Override
     public List<TokenMatch> lex(String text) {
-        tokens = lex(text, new ArrayList<>(), 1, 1);
+        tokens = lex(text.concat("\n"), new ArrayList<>(), 1, 1);
         return tokens;
     }
 
     private List<TokenMatch> lex(String text, List<TokenMatch> tokens, int row, int column) {
         if(text.length() == 1) return tokens;
-
-        TokenMatch tokenMatch = handler.handleString(text);
+        TokenMatch tokenMatch;
+        try {
+            tokenMatch = handler.handleString(text);
+        } catch (InvalidTokenException e) {
+            throw new RuntimeException("Invalid token at (" + row + ", " + column + ")");
+        }
         int length = tokenMatch.getValue().length();
         tokenMatch.setRow(row);
         tokenMatch.setColumn(column);
